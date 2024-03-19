@@ -79,12 +79,6 @@ class ContactController {
     // Delete a register
     const { id } = request.params;
 
-    const contact = await ContactsRepository.findById(id);
-
-    if (!contact) {
-      return response.status(404).json({ error: 'Contact not found' });
-    }
-
     await ContactsRepository.delete(id);
     // sendStatus: Just send status without body
     // 204: No Content
